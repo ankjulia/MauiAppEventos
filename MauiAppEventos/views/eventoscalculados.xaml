@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppEventos.views.eventoscalculados"
+             Title="eventoscalculados"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+            <GradientStop Color="{StaticResource Gray300}" Offset="0.3"></GradientStop>
+            <GradientStop Color="{StaticResource detalhe}" Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+
+        <Label Text="Valores total do evento"
+               FontFamily="funnel"
+               FontSize="60"
+               TextColor="{StaticResource MidnightBlue}"
+               HorizontalTextAlignment="Center"></Label>
+
+        <Label Text="{Binding nomedoevento}"
+              BindingContext="{x:Reference txt_nome_evento}"
+               FontSize="25"
+               FontFamily="funnel"
+               TextColor="DarkBlue"></Label>
+
+        <Label Text="{Binding localselecionado.descricao}"
+               FontFamily="funnel"
+               FontSize="40"
+               TextColor="{StaticResource MidnightBlue}"
+               HorizontalTextAlignment="Center"></Label>
+
+
+        <Frame Margin="10" >
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label Text=" Adultos: " FontSize="17" FontFamily="funnel" Padding="5"></Label>
+                <Label Text="{Binding qntadultos}" FontSize="15" FontFamily="funnel " Padding="5" Margin="4"></Label>
+
+                <HorizontalStackLayout>
+                    <Label Text=" Crianças:" FontSize="17" FontFamily="funnel" Padding="5"></Label>
+                    <Label Text="{Binding qntcriancas}" FontSize="15" FontFamily="funnel " Padding="5" Margin="4"></Label>
+
+                    <HorizontalStackLayout>
+                        <Label Text=" Idosos:" FontSize="17" FontFamily="funnel" Padding="5"></Label>
+                        <Label Text="{Binding qntidoso}" FontSize="15" FontFamily="funnel " Padding="3" Margin="5"></Label>
+
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+        </Frame>
+       
+
+        <Frame Margin="10" >
+            <Grid ColumnDefinitions="*, *, *"
+                  RowDefinitions="Auto, Auto">
+
+                <Label Grid.Row="0" Grid.Column="0" Text=" Inicio do evento" FontSize="15" FontFamily="funnel" HorizontalOptions="Center"></Label>
+                <Label Grid.Row="0" Grid.Column="1" Text=" Fim do evento" FontSize="15" FontFamily="funnel" HorizontalOptions="Center" ></Label>
+                <Label Grid.Row="0" Grid.Column="2" Text=" Dias totais de evento" FontSize="15" FontFamily="funnel" HorizontalOptions="Center" ></Label>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="{Binding datadeinicio, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="15" FontFamily="funnel" HorizontalOptions="Center" ></Label>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding datadefim, StringFormat='{}{0:dd/MM/yyyy}'} " FontSize="15" FontFamily="funnel" HorizontalOptions="Center" ></Label>
+                <Label Grid.Row="1" Grid.Column="2" Text="{Binding totaldedias} " FontSize="15" FontFamily="funnel" HorizontalOptions="Center"></Label>
+              
+            </Grid>
+        </Frame>
+
+        <Frame Margin="10">
+            <HorizontalStackLayout HorizontalOptions="Center" >
+                <Label Text=" Valor total:" FontSize="15" FontFamily="funnel" Padding="10"></Label>
+                <Label Text="{Binding valortotal,StringFormat='{}{0:c}'} " Padding="10 "></Label>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Button Text=" voltar " HorizontalOptions="Center"  Clicked="Button_Clicked" BackgroundColor="{StaticResource MidnightBlue}" TextColor="White" FontFamily="funnel"></Button>
+    </VerticalStackLayout>
+</ContentPage>

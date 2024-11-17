@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppEventos.views.informacoeseventos"
+             NavigationPage.HasNavigationBar="False"
+             Title="informacoeseventos">
+    <ContentPage.Background>
+    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+            <GradientStop Color="{StaticResource Gray300}" Offset="0.3"></GradientStop>
+            <GradientStop Color="{StaticResource detalhe}" Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </ContentPage.Background> 
+
+    
+    
+    <VerticalStackLayout VerticalOptions="CenterAndExpand" Padding="10">
+        <Label 
+            Text="Dados sobre o evento "
+            FontFamily="lexend"
+            TextColor="{StaticResource MidnightBlue}"
+            FontSize="40"
+            HorizontalOptions="Center"
+            Margin="5"></Label>
+
+        
+        <Label Text="Nome roposto para o evento:"
+               FontSize="20"
+               FontFamily="funnel"
+               TextColor="Black"></Label>
+
+       
+
+            <Label Text="{Binding Value}"
+              BindingContext="{x:Reference txt_nome_evento}"
+               ></Label>
+        
+
+        <Entry x:Name="txt_nome_evento" 
+               Background="White"
+               TextColor="Black"></Entry>
+      
+
+        <Frame
+            Padding="10"
+            Margin="10"
+            >
+            <VerticalStackLayout>
+                <Label Text=" Periodo do evento"
+                      FontSize="25"
+                       FontFamily="funnel"
+                       Margin="15"
+                       HorizontalOptions="Center"></Label>
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Margin="10">
+                    <Label Text="inicio do evento"
+                           FontSize="20"
+                           FontFamily="funnel"
+                            ></Label>
+                    <DatePicker x:Name="dtpck_inicio"
+                                Format="dd/mm/yyyy"></DatePicker>
+                    
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Margin="10">
+                    <Label Text="fim do evento"
+           FontSize="20"
+           FontFamily="funnel"></Label>
+                    <DatePicker x:Name="dtpck_fim"
+                Format="dd/mm/yyyy"></DatePicker>
+                </HorizontalStackLayout>
+
+
+                <Label Text="Quantidade de pessoas para o evento "
+                       FontSize="25"
+                       FontFamily="funnel"
+                       Margin="5"
+                       HorizontalOptions="Center"></Label>
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Grid RowDefinitions=" Auto, Auto, Auto, Auto, Auto"
+                          ColumnDefinitions="*, *, 2*">
+                  
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="Adultos:"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5"
+                           ></Label>
+
+                        <Stepper Grid.Row="0" Grid.Column="2"
+                               x:Name="stp_adultos"
+                               Minimum="0"
+                               Maximum="50"></Stepper>
+
+                        <Label Grid.Row="0" Grid.Column="1"
+                              TextColor="white"
+                               Text="{Binding Value}"
+                               Padding="15"
+                               BindingContext="{x:Reference stp_adultos}"></Label>
+
+                        <Label Grid.Row="1" Grid.Column="0"
+                           Text="Crianças:"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5"></Label>
+
+                        <Stepper Grid.Row="1" Grid.Column="3"
+                            x:Name="stp_criancas"
+                            Minimum="0"
+                            Maximum="25"
+                                 
+                             ></Stepper>
+
+                        <Label Grid.Row="1" Grid.Column="1"
+                           TextColor="white"
+                                Padding="15"
+                           Text="{Binding Value}"
+                           BindingContext="{x:Reference stp_criancas}"
+                               ></Label>
+
+                        <Label Grid.Row="3" Grid.Column="0"
+                           Text="idosos:"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5">
+                        </Label>
+
+
+                        <Stepper Grid.Row="3" Grid.Column="2"
+                           x:Name="stp_idoso"
+                           Minimum="0"
+                           Maximum="50"
+                           ></Stepper>
+
+                        <Label Grid.Row="3" Grid.Column="1"
+                         TextColor="white"
+                         Text="{Binding Value}"
+                         Padding="15"
+                         BindingContext="{x:Reference stp_idoso}"></Label>
+
+                    </Grid>
+
+                   
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+
+        <Label Text="Local proposto para o evento"
+                FontSize="25"
+               FontFamily="funnel"
+               TextColor="Black"
+                       ></Label>
+        <Picker x:Name="pck_local_evento"
+                        Title="selecione "
+                     FontFamily="funnel"
+                       ItemDisplayBinding="{Binding descricao}"
+                TextColor="Black"
+                BackgroundColor="White">
+        </Picker>
+
+
+        <Label Text="Valores determinados para cada pessoa de acordo com o local escolhido"
+ 
+               FontSize="25"
+               FontFamily="funnel"
+               TextColor="Black"></Label>
+
+        <Frame Padding="10"
+               Margin="10">
+            <VerticalStackLayout>
+                
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                      ColumnDefinitions="*, *, *, *, *, *, *"
+                      HorizontalOptions="Center">
+
+                    <Label Grid.Row="0" Grid.Column="0"
+                           Text="Pessoas"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5"></Label>
+                    
+                    <Label Grid.Row="0" Grid.Column="1"
+                            Text="chagara"
+                            FontSize="20"
+                            FontFamily="funnel"
+                           Margin="5"></Label>
+                    
+                    <Label Grid.Row="0" Grid.Column="2"
+                           Text="Salão"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5"></Label>
+
+                    <Label Grid.Row="0" Grid.Column="3"
+                           Text="Igreja"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5"></Label>
+
+                    <Label Grid.Row="0" Grid.Column="4"
+                           Text="Boliche"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5" ></Label>
+
+                    <Label Grid.Row=" 0" Grid.Column="5"
+                           Text="Playgrond"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5"></Label>
+
+
+                    <Label Grid.Row=" 0" Grid.Column="6"
+                           Text="Chale"
+                           FontSize="20"
+                           FontFamily="funnel"
+                           Margin="5"></Label>
+
+                    <Label Grid.Row="1" Grid.Column="0"
+                           Text="Crianças"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"
+                           ></Label>
+
+                    <Label Grid.Row="2" Grid.Column="0"
+                           Text="Adultos"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+
+                    <Label Grid.Row="3" Grid.Column="0"
+                           Text="Idosos"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+                    <Label Grid.Row="1" Grid.Column="1"
+                           Text="R$ 60"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+                    <Label Grid.Row="2" Grid.Column="1"
+                          Text="R$ 140"
+                           HorizontalOptions="Center"
+                          FontSize="15"
+                          FontFamily="funnel"
+                          Margin="5"  ></Label>
+
+
+                    <Label Grid.Row="3" Grid.Column="1"
+                          Text="R$ 70"
+                           HorizontalOptions="Center"
+                          FontSize="15"
+                          FontFamily="funnel"
+                          Margin="5"  ></Label>
+
+                    <Label Grid.Row="1" Grid.Column="2"
+                           Text="R$ 50"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+                    <Label Grid.Row="2" Grid.Column="2"
+                           Text="R$ 130"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+                     <Label Grid.Row="3" Grid.Column="2"
+                           Text="R$ 60"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                          FontFamily="funnel"
+                          Margin="5"  ></Label>
+
+                    <Label Grid.Row="1" Grid.Column="3"
+                           Text="R$ 45"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                          FontFamily="funnel"
+                          Margin="5"  ></Label>
+
+                    <Label Grid.Row="1" Grid.Column="3"
+                            Text="R$ 45"
+                         HorizontalOptions="Center"
+                         FontSize="15"
+                         FontFamily="funnel"
+                         Margin="5"  ></Label>
+
+                     <Label Grid.Row="2" Grid.Column="3"
+                           Text="R$ 125"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+                    <Label Grid.Row="3" Grid.Column="3"
+                           Text="R$ 55"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+                    <Label Grid.Row="1" Grid.Column="4"
+                          Text="R$ 55"
+                           HorizontalOptions="Center"
+                          FontSize="15"
+                          FontFamily="funnel"
+                          Margin="5"  ></Label>
+
+                    <Label Grid.Row="2" Grid.Column="4"
+                            Text="R$ 135"
+                            HorizontalOptions="Center"
+                           FontSize="15"
+                          FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+                    <Label Grid.Row="3" Grid.Column="4"
+                           Text="R$ 65"
+                           HorizontalOptions="Center"
+                            FontSize="15"
+                           FontFamily="funnel"
+                          Margin="5"  ></Label>
+
+                    <Label Grid.Row="1" Grid.Column="5"
+                           Text="R$ 90"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+
+                    <Label Grid.Row="2" Grid.Column="5"
+                          Text="R$ 60"
+                          HorizontalOptions="Center"
+                           FontSize="15"
+                        FontFamily="funnel"
+                         Margin="5"  ></Label>
+
+
+                    <Label Grid.Row="3" Grid.Column="5"
+                          Text="R$ 30"
+                          HorizontalOptions="Center"
+                           FontSize="15"
+                        FontFamily="funnel"
+                         Margin="5"  ></Label>
+
+                    <Label Grid.Row="1" Grid.Column="6"
+                           Text="R$ 70"
+                          HorizontalOptions="Center"
+                           FontSize="15"
+                          FontFamily="funnel"
+                          Margin="5"  ></Label>
+
+                    <Label Grid.Row="2" Grid.Column="6"
+                          Text="R$ 150"
+                          HorizontalOptions="Center"
+                          FontSize="15"
+                         FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+                    <Label Grid.Row="3" Grid.Column="6"
+                           Text="R$ 85"
+                           HorizontalOptions="Center"
+                           FontSize="15"
+                           FontFamily="funnel"
+                           Margin="5"  ></Label>
+
+
+
+
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+
+        <Button Text="Calcular total do evento" Clicked="Button_Clicked" HorizontalOptions="Center"
+                Padding="2"
+                Margin="20"
+                FontFamily="funnel"
+                BackgroundColor="{StaticResource MidnightBlue}"
+                TextColor="white"></Button>
+        
+        
+    </VerticalStackLayout>
+</ContentPage>
